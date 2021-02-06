@@ -1,5 +1,5 @@
 # UC Event Tracker App
-Weather app for ent app development class
+Tracker app for University of Cincinnati events.
 
 ## Introduction
 
