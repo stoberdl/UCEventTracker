@@ -8,8 +8,21 @@ Tracker app for University of Cincinnati events.
 ## Requirements
 
 ## Class Diagram
+![Class Diagram](https://user-images.githubusercontent.com/41589695/107131519-40252200-68a5-11eb-943a-285d60345bde.png)
 
-###Class Diagram Description 
+### Class Diagram Description 
+**MainActivity:** The first screen the user sees. This will have a list of all the ongoing and previous events on campus, and an option to get more info and rsvp a particular event.  
+
+**RetrofitInstance:** Boostrap class required for Retrofit.  
+
+**Event:** Noun class that represents an Event.  
+
+**IEventDAO:** Interface for Retrofit to find and parse Event data JSON.  
+
+**Host:** Noun class that represents a event Host which might be a preofessor or a student organisation.  
+
+**IHostDAO:** Interface for Retrofit to find and parse Host data JSON.  
+
 
 ## Event Output JSON Schema
 ```
