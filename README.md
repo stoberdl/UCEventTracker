@@ -1,4 +1,4 @@
-# UC Event TRacker App
+# UC Event Tracker App
 Weather app for ent app development class
 
 ## Introduction
