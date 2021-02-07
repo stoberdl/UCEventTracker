@@ -2,7 +2,7 @@
 Tracker app for University of Cincinnati events.
 
 ## Introduction
-
+Have you ever wanted to know what events are going on at campus? Then try the premier tracker app for UC! You can view all future events, favorite them, or even add you're own.
 ## Storyboard
 ![Storyboard](https://user-images.githubusercontent.com/41589695/107148721-c7fd4180-6922-11eb-97f3-c0e9dff9703a.png)
 
