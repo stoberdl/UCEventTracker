@@ -4,6 +4,7 @@ Tracker app for University of Cincinnati events.
 ## Introduction
 
 ## Storyboard
+![Storyboard](https://user-images.githubusercontent.com/41589695/107148721-c7fd4180-6922-11eb-97f3-c0e9dff9703a.png)
 
 ## Requirements
 
