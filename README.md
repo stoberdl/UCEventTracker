@@ -7,7 +7,48 @@ Have you ever wanted to know what events are going on at campus? Then try the pr
 ![Storyboard](https://user-images.githubusercontent.com/41589695/107148721-c7fd4180-6922-11eb-97f3-c0e9dff9703a.png)
 
 ## Requirements
+```
 
+As a user
+I want to see UC Events
+So that I can know the event details
+
+    Given I check the events list
+    When it loads the event data
+    Then I should see a list of events with matching data in time ascending order
+
+    Given I check the events list
+    When it loads the event data
+    Then I should only see valid events for UC
+    
+    Given I check the event details
+    When it loads the event data
+    Then I should see its title ,location, start time, end time, description, and host
+ 
+ 
+ 
+As a user
+I want to sort the events by category or date
+So that I can find certain events
+
+    Given I check the events list and sort by a category
+    When it loads the event data
+    Then I should see a list of events with the matching category only
+
+    Given I check the events list and sort by a date
+    When it loads the event data
+    Then I should only see valid events for that date or date range
+    
+    Given I check the events list and sort more than one category
+    When it loads the event data
+    Then I should see events for all matching categories
+    
+    Given I sort the events list and stop sorting
+    When it loads the event data
+    Then I should see all events 
+
+
+```
 ## Class Diagram
 ![Class Diagram](https://user-images.githubusercontent.com/41589695/107131519-40252200-68a5-11eb-943a-285d60345bde.png)
 
