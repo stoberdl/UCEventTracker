@@ -1,10 +1,25 @@
 package com.uceventtracker.eventtracker.service;
 
+import com.uceventtracker.eventtracker.dao.IEventDAO;
 import com.uceventtracker.eventtracker.dto.Event;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.List;
+
+@Service
 public class EventServiceStub implements IEventService{
+    @Autowired
+    private IEventDAO eventDAO;
+
+    public EventServiceStub(){
+
+    }
+
+    public EventServiceStub(IEventDAO eventDAO){
+        this.eventDAO = eventDAO;
+    }
+
     @Override
     public Event fetchEventById(int eventId) {
         Event event = new Event();
@@ -16,5 +31,10 @@ public class EventServiceStub implements IEventService{
         event.setHost("Major League Hacking");
 
         return event;
+    }
+
+    @Override
+    public List<Event> fetchAllEvents() {
+        return eventDAO.fetchAllEvents();
     }
 }

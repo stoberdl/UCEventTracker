@@ -5,9 +5,11 @@ import com.uceventtracker.eventtracker.service.IEventService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import java.util.List;
 
 @SpringBootTest
 class EventTrackerApplicationTests {
+    private List<Event> allEvents;
 
     @Autowired
     private IEventService eventService;
@@ -20,14 +22,21 @@ class EventTrackerApplicationTests {
     @Test
     void checkEventData(){
         givenEventDataIsAvailable();
-        whenEventDataIsLoaded();
+        whenEventIsSearchedWithId();
         thenViewEventData();
+    }
+
+    @Test
+    void fetchAllEvents(){
+        givenEventDataIsAvailable();
+        whenEventDataIsLoaded();
+        thenDisplayListOfEvents();
     }
 
     private void givenEventDataIsAvailable() {
     }
 
-    private void whenEventDataIsLoaded() {
+    private void whenEventIsSearchedWithId() {
         event = eventService.fetchEventById(1);
     }
 
@@ -38,5 +47,12 @@ class EventTrackerApplicationTests {
         System.out.println(event.getEndTime());
         System.out.println(event.getDescription());
         System.out.println(event.getHost());
+    }
+
+    private void whenEventDataIsLoaded() {
+    }
+
+    private void thenDisplayListOfEvents() {
+        allEvents = eventService.fetchAllEvents();
     }
 }
