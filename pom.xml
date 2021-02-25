@@ -45,6 +45,20 @@
             <groupId>com.rometools</groupId>
             <artifactId>rome</artifactId>
             <version>1.15.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/lib/rome-1.15.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+            <version>2.0.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/lib/jdom-2.0.6.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.3.3.RELEASE</version>
         </dependency>
     </dependencies>
 
@@ -60,6 +74,21 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.rometools</groupId>
+                <artifactId>rome</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom2</artifactId>
+                <version>2.0.6</version>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
                 </configuration>
             </plugin>
         </plugins>
