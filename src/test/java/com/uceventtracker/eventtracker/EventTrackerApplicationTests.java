@@ -33,6 +33,12 @@ class EventTrackerApplicationTests {
         thenDisplayListOfEvents();
     }
 
+    @Test
+    void readRSSEventsFeed(){
+
+
+    }
+
     private void givenEventDataIsAvailable() {
     }
 
