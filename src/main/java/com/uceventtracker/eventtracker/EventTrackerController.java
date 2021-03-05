@@ -13,7 +13,7 @@ public class EventTrackerController {
      */
     @RequestMapping("/")
     public String index(Model model) {
-        Event event = new event();
+        Event event = new Event();
         event.setEventId(10);
         event.setTitle("UC Hackathon");
         event.setLocation("Crosley tower");
