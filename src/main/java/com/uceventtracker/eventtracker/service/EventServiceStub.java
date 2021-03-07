@@ -25,6 +25,7 @@ public class EventServiceStub implements IEventService {
     }
 
     public EventServiceStub(IEventDAO eventDAO) {
+
         this.eventDAO = eventDAO;
     }
 
