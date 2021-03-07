@@ -31,12 +31,16 @@ public class EventServiceStub implements IEventService {
     @Override
     public Event fetchEventById(int eventId) {
         Event event = new Event();
-        event.setEventId(1);
+        event.setEventID(1);
+        event.setHostID(11);
+        event.setDateID(111);
         event.setTitle("Revolution UC");
+        event.setLocation("TUC University of Cincinnati");
+        event.setDate("1/1/2021");
         event.setStartTime("11:00am Friday");
         event.setEndTime("11:00am Friday");
         event.setDescription("Hackathon");
-        event.setHost("Major League Hacking");
+        event.setHostName("Major League Hacking");
 
         return event;
     }
@@ -53,7 +57,7 @@ public class EventServiceStub implements IEventService {
                 for (SyndEntry entry : feed.getEntries()) {
 
                     Event event = new Event();
-                    event.setEventId(eventId);
+                    event.setEventID(eventId);
                     eventId++;
                     event.setTitle(entry.getTitle());
 
@@ -86,7 +90,7 @@ public class EventServiceStub implements IEventService {
 
                     }
                     event.setDescription(description);
-                    event.setHost(entry.getAuthor());
+                    event.setHostName(entry.getAuthor());
 
                     //add and save event to dao here
                 }

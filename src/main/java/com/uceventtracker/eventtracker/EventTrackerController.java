@@ -14,14 +14,18 @@ public class EventTrackerController {
     @RequestMapping("/")
     public String index(Model model) {
         Event event = new Event();
-        event.setEventId(10);
+        event.setEventID(10);
+        event.setHostID(110);
+        event.setDateID(1110);
         event.setTitle("UC Hackathon");
         event.setLocation("Crosley tower");
+        event.setDate("1/2/2021");
         event.setStartTime("1pm");
         event.setEndTime("5pm");
         event.setDescription("Groups compete to solve problems");
-        event.setHost("CECH");
+        event.setHostName("CECH");
         model.addAttribute(event);
+
         return "start";
     }
 
