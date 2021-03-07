@@ -16,15 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EventServiceStub implements IEventService {
+public class EventService implements IEventService {
     @Autowired
     private IEventDAO eventDAO;
 
-    public EventServiceStub() {
+    public EventService() {
 
     }
 
-    public EventServiceStub(IEventDAO eventDAO) {
+    public EventService(IEventDAO eventDAO) {
 
         this.eventDAO = eventDAO;
     }
