@@ -15,8 +15,6 @@ public class EventTrackerController {
     public String index(Model model) {
         Event event = new Event();
         event.setEventID(10);
-        event.setHostID(110);
-        event.setDateID(1110);
         event.setTitle("UC Hackathon");
         event.setLocation("Crosley tower");
         event.setDate("1/2/2021");

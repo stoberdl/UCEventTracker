@@ -17,12 +17,9 @@ import java.util.List;
 
 @Service
 public class EventServiceStub implements IEventService {
+
     @Autowired
     private IEventDAO eventDAO;
-
-    public EventServiceStub() {
-
-    }
 
     public EventServiceStub(IEventDAO eventDAO) {
         this.eventDAO = eventDAO;
@@ -32,8 +29,6 @@ public class EventServiceStub implements IEventService {
     public Event fetchEventById(int eventId) {
         Event event = new Event();
         event.setEventID(1);
-        event.setHostID(11);
-        event.setDateID(111);
         event.setTitle("Revolution UC");
         event.setLocation("TUC University of Cincinnati");
         event.setDate("1/1/2021");
@@ -61,10 +56,10 @@ public class EventServiceStub implements IEventService {
                     eventId++;
                     event.setTitle(entry.getTitle());
 
-                    String descriptionData = entry.getDescription().getValue();//get html text from the description which contains multiple values
-                    descriptionData = descriptionData.replaceAll("\\<[^>]*>", "");//remove html from string
-                    descriptionData = descriptionData.replaceAll("  ", "");//remove extra spacing
-                    String[] descriptionDataList = descriptionData.split("\\r?\\n");//split by new lines
+                    String descriptionData = entry.getDescription().getValue();                       /* gets html text from the description which contains multiple values */
+                    descriptionData = descriptionData.replaceAll("\\<[^>]*>", "");  /* removes html from string */
+                    descriptionData = descriptionData.replaceAll("  ", "");         /* removes extra spacing */
+                    String[] descriptionDataList = descriptionData.split("\\r?\\n");            /* splits by new lines */
 
                     boolean saveNextLine = false;
                     String description = "";
@@ -87,12 +82,11 @@ public class EventServiceStub implements IEventService {
                             i = i.replace(".", "");
                             event.setLocation(i);
                         }
-
                     }
                     event.setDescription(description);
                     event.setHostName(entry.getAuthor());
+                    //TODO: Add and save event to DAO here
 
-                    //add and save event to dao here
                 }
             }
         } catch (Exception e) {
@@ -103,7 +97,6 @@ public class EventServiceStub implements IEventService {
 
     @Override
     public List<Event> fetchAllEvents() {
-
         return eventDAO.fetchAllEvents();
     }
 }
