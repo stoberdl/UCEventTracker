@@ -6,5 +6,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 public interface IEventDAO {
+    /**
+     * Save a new Skate Spot
+     * //@param //SkateSpotDTO the entry to save.
+     */
+    void save(Event event);
     List<Event> fetchAllEvents();
 }
