@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface IEventDAO {
     /**
-     * Save a new Skate Spot
-     * //@param //SkateSpotDTO the entry to save.
+     * Save a new Event
+     * //@param //Event the entry to save.
      */
     void save(Event event);
+    /**
+     * Return all events
+     * //@return a collection of all events.
+     */
     List<Event> fetchAllEvents();
 }
