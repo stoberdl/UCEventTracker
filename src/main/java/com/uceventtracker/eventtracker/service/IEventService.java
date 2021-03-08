@@ -13,5 +13,5 @@ public interface IEventService {
     */
     Event fetchEventById(int eventId);
 
-    Map<Integer, Event> fetchAll();
+    Map<Integer, Event> fetchAllEvents();
 }

@@ -94,9 +94,8 @@ public class EventServiceStub implements IEventService {
         }
     }
 
-
     @Override
-    public Map<Integer, Event> fetchAll() {
+    public Map<Integer, Event> fetchAllEvents() {
         return eventDAO.fetchAll();
     }
 }
