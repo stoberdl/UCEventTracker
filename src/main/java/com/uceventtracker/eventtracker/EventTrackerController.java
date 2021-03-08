@@ -15,12 +15,12 @@ public class EventTrackerController {
     public String index(Model model) {
         Event event = new Event();
         event.setEventId(10);
-        event.setTitle("UC Hackathon");
-        event.setLocation("Crosley tower");
+        event.setEventTitle("UC Hackathon");
+        event.setEventLocation("Crosley tower");
         event.setStartTime("1pm");
         event.setEndTime("5pm");
-        event.setDescription("Groups compete to solve problems");
-        event.setHost("CECH");
+        event.setEventDescription("Groups compete to solve problems");
+        event.setEventHost("CECH");
         model.addAttribute(event);
         return "start";
     }

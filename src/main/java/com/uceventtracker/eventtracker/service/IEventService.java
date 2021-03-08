@@ -1,9 +1,10 @@
 package com.uceventtracker.eventtracker.service;
 
 import com.uceventtracker.eventtracker.dto.Event;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public interface IEventService {
 
     /*
