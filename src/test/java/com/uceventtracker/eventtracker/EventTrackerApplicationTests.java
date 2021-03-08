@@ -47,12 +47,12 @@ class EventTrackerApplicationTests {
     }
 
     private void thenViewEventData() {
-        System.out.println(event.getTitle());
-        System.out.println(event.getLocation());
+        System.out.println(event.getEventTitle());
+        System.out.println(event.getEventLocation());
         System.out.println(event.getStartTime());
         System.out.println(event.getEndTime());
-        System.out.println(event.getDescription());
-        System.out.println(event.getHost());
+        System.out.println(event.getEventDescription());
+        System.out.println(event.getEventHost());
     }
 
     private void whenEventDataIsLoaded() {
