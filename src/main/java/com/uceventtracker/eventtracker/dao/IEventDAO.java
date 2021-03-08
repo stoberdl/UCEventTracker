@@ -1,14 +1,27 @@
 package com.uceventtracker.eventtracker.dao;
 
+import com.uceventtracker.eventtracker.dto.Date;
 import com.uceventtracker.eventtracker.dto.Event;
+import com.uceventtracker.eventtracker.dto.Host;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Data Access Object Interface for Events
+ * <p>
+ *     Gives access to Event data
+ * </p>
+ */
 public interface IEventDAO {
 
-    Map<Integer, Event> fetchAll();
+    boolean createEvent(Event event);
 
-    List<Event> fetchAllEvents();
+    List<Event> fetchByTitle(String title);
+
+    Event fetchByHostName(int hostID);
+
+    Event fetchByDate(String date);
+
+    Map<Integer,Event> fetchAll();
 }

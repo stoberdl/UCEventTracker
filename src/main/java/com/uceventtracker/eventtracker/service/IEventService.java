@@ -3,6 +3,7 @@ package com.uceventtracker.eventtracker.service;
 import com.uceventtracker.eventtracker.dto.Event;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IEventService {
     /*
@@ -12,5 +13,5 @@ public interface IEventService {
     */
     Event fetchEventById(int eventId);
 
-    List<Event> fetchAllEvents();
+    Map<Integer, Event> fetchAll();
 }

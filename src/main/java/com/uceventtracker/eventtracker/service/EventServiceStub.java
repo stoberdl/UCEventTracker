@@ -14,6 +14,7 @@ import com.rometools.rome.io.XmlReader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EventServiceStub implements IEventService {
@@ -86,7 +87,6 @@ public class EventServiceStub implements IEventService {
                     event.setDescription(description);
                     event.setHostName(entry.getAuthor());
                     //TODO: Add and save event to DAO here
-
                 }
             }
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class EventServiceStub implements IEventService {
 
 
     @Override
-    public List<Event> fetchAllEvents() {
-        return eventDAO.fetchAllEvents();
+    public Map<Integer, Event> fetchAll() {
+        return eventDAO.fetchAll();
     }
 }

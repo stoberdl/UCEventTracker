@@ -9,6 +9,7 @@ import java.util.List;
 
 @SpringBootTest
 class EventTrackerApplicationTests {
+
     private List<Event> allEvents;
 
     @Autowired
@@ -16,8 +17,7 @@ class EventTrackerApplicationTests {
     private Event event;
 
     @Test
-    void contextLoads() {
-    }
+    void contextLoads() { }
 
     @Test
     void checkEventData(){
@@ -34,13 +34,9 @@ class EventTrackerApplicationTests {
     }
 
     @Test
-    void readRSSEventsFeed(){
+    void readRSSEventsFeed(){ }
 
-
-    }
-
-    private void givenEventDataIsAvailable() {
-    }
+    private void givenEventDataIsAvailable() { }
 
     private void whenEventIsSearchedWithId() {
         event = eventService.fetchEventById(1);
@@ -56,10 +52,9 @@ class EventTrackerApplicationTests {
         System.out.println(event.getHostName());
     }
 
-    private void whenEventDataIsLoaded() {
-    }
+    private void whenEventDataIsLoaded() { }
 
     private void thenDisplayListOfEvents() {
-        allEvents = eventService.fetchAllEvents();
+        allEvents = (List<Event>) eventService.fetchAll();
     }
 }
