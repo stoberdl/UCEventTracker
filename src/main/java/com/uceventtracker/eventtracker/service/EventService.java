@@ -16,15 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EventServiceStub implements IEventService {
+public class EventService implements IEventService {
     @Autowired
     private IEventDAO eventDAO;
 
-    public EventServiceStub() {
+    public EventService() {
 
     }
 
-    public EventServiceStub(IEventDAO eventDAO) {
+    public EventService(IEventDAO eventDAO) {
+
         this.eventDAO = eventDAO;
     }
 
@@ -57,10 +58,10 @@ public class EventServiceStub implements IEventService {
                     eventId++;
                     event.setTitle(entry.getTitle());
 
-                    String descriptionData = entry.getDescription().getValue();//get html text from the description which contains multiple values
-                    descriptionData = descriptionData.replaceAll("\\<[^>]*>", "");//remove html from string
-                    descriptionData = descriptionData.replaceAll("  ", "");//remove extra spacing
-                    String[] descriptionDataList = descriptionData.split("\\r?\\n");//split by new lines
+                    String descriptionData = entry.getDescription().getValue();                      /* get html text from the description which contains multiple values */
+                    descriptionData = descriptionData.replaceAll("\\<[^>]*>", "");   /* remove html from string */
+                    descriptionData = descriptionData.replaceAll("  ", "");          /* remove extra spacing */
+                    String[] descriptionDataList = descriptionData.split("\\r?\\n");           /* split by new lines */
 
                     boolean saveNextLine = false;
                     String description = "";
