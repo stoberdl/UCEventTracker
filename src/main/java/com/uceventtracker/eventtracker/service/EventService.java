@@ -89,7 +89,7 @@ public class EventService implements IEventService {
                     event.setDescription(description);
                     event.setHost(entry.getAuthor());
 
-                    //add and save event to dao here
+                    //TODO: add and save event to dao here
                 }
             }
         } catch (Exception e) {
