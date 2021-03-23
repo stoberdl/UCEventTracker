@@ -1,4 +1,4 @@
-package com.uceventtracker.eventtracker;
+package com.uceventtracker.eventtracker.controllers;
 
 import com.uceventtracker.eventtracker.dto.Event;
 import org.springframework.stereotype.Controller;
