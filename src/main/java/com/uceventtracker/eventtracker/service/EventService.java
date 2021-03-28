@@ -5,34 +5,22 @@ import com.uceventtracker.eventtracker.dto.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
-
-import com.rometools.rome.feed.synd.SyndEntry;
-import com.rometools.rome.feed.synd.SyndFeed;
-import com.rometools.rome.io.SyndFeedInput;
-import com.rometools.rome.io.XmlReader;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Service
 public class EventService implements IEventService {
     @Autowired
     private IEventDAO eventDAO;
 
-    public EventService() {
-
-    }
-
-    public EventService(IEventDAO eventDAO) {
-
-        this.eventDAO = eventDAO;
-    }
-
     @Override
     public Event fetchEventById(int eventId) {
         Event event = new Event();
-        event.setEventId(1);
         event.setTitle("Revolution UC");
         event.setStartTime("11:00am Friday");
         event.setEndTime("11:00am Friday");
@@ -42,65 +30,72 @@ public class EventService implements IEventService {
         return event;
     }
 
-    public static void loadRSS() {
-
-        try {
-            String url = "https://campuslink.uc.edu/events.rss";
-
-            try (XmlReader reader = new XmlReader(new URL(url))) {
-                SyndFeed feed = new SyndFeedInput().build(reader);
-
-                int eventId = 1;
-                for (SyndEntry entry : feed.getEntries()) {
-
-                    Event event = new Event();
-                    event.setEventId(eventId);
-                    eventId++;
-                    event.setTitle(entry.getTitle());
-
-                    String descriptionData = entry.getDescription().getValue();                      /* get html text from the description which contains multiple values */
-                    descriptionData = descriptionData.replaceAll("\\<[^>]*>", "");   /* remove html from string */
-                    descriptionData = descriptionData.replaceAll("  ", "");          /* remove extra spacing */
-                    String[] descriptionDataList = descriptionData.split("\\r?\\n");           /* split by new lines */
-
-                    boolean saveNextLine = false;
-                    String description = "";
-
-                    for (String i : descriptionDataList) {
-                        System.out.println(i);
-                        if (i.startsWith(entry.getTitle())) {
-                            saveNextLine = true;
-                        } else if (i.startsWith("From")) {
-                            saveNextLine = false;
-                            i = i.replace("From ", "");
-                            event.setStartTime(i);
-                        } else if (saveNextLine) {
-                            description = description + i;
-                        } else if (i.startsWith("to")) {
-                            i = i.replace("to ", "");
-                            event.setEndTime(i);
-                        } else if (i.startsWith("at")) {
-                            i = i.replace("at ", "");
-                            i = i.replace(".", "");
-                            event.setLocation(i);
-                        }
-
-                    }
-                    event.setDescription(description);
-                    event.setHost(entry.getAuthor());
-
-                    //TODO: add and save event to dao here
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     @Override
     public List<Event> fetchAllEvents() {
 
         return eventDAO.fetchAllEvents();
+    }
+
+    @Override
+    public List<Event> fetchRssEvents(){
+        List<Event> allEvents = new ArrayList<Event>();
+        ArrayList<String> eventInfo = loadRSS();
+
+
+        for(String i : eventInfo){
+            Event event = new Event();
+
+            String title = i.substring(i.indexOf("<title>")+7, i.indexOf("</title>"));
+            String description = i.substring(i.indexOf("<description>")+13, i.indexOf("</description>"));
+            description = description.substring(description.indexOf("p-description description")+27, description.indexOf("<div>    <p>"));
+            description = description.replaceAll("<[^>]*>", "");
+            description = description.replaceAll("&nbsp;", "");
+            String location = i.substring(i.indexOf("<location>")+10, i.indexOf("</location>"));
+            String start = i.substring(i.indexOf("<start>")+7, i.indexOf("</start>"));
+            String end = i.substring(i.indexOf("<end>")+5, i.indexOf("</end>"));
+            String host = i.substring(i.indexOf("<host>")+6, i.indexOf("</host>"));
+
+            event.setTitle(title);
+            event.setDescription(description);
+            event.setLocation(location);
+            event.setLocation(location);
+            event.setStartTime(start);
+            event.setEndTime(end);
+            event.setHost(host);
+
+            allEvents.add(event);
+        }
+
+        return allEvents;
+    }
+
+    private ArrayList<String> loadRSS() {
+        ArrayList<String> eventInfo = new ArrayList<String>();
+
+        try{
+            URL url = new URL("https://campuslink.uc.edu/events.rss");
+            Scanner in = new Scanner(new InputStreamReader(url.openStream()));
+            String data = "";
+
+            while(in.hasNext()){
+                data += in.nextLine();
+            }
+
+            data = data.substring(data.indexOf("<item>"));
+            String[] temp = data.split("</item>");
+
+            for(String i : temp){
+                eventInfo.add(i);
+            }
+
+            eventInfo.remove(eventInfo.size()-1);
+            return eventInfo;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

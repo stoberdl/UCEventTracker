@@ -14,4 +14,6 @@ public interface IEventService {
     Event fetchEventById(int eventId);
 
     List<Event> fetchAllEvents();
+
+    List<Event> fetchRssEvents();
 }

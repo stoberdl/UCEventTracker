@@ -5,6 +5,8 @@ import com.uceventtracker.eventtracker.service.IEventService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -14,10 +16,6 @@ class EventTrackerApplicationTests {
     @Autowired
     private IEventService eventService;
     private Event event;
-
-    @Test
-    void contextLoads() {
-    }
 
     @Test
     void checkEventData(){
@@ -35,8 +33,11 @@ class EventTrackerApplicationTests {
 
     @Test
     void readRSSEventsFeed(){
+        allEvents = eventService.fetchRssEvents();
 
-
+        for(Event e : allEvents){
+            System.out.println(e.getTitle());
+        }
     }
 
     private void givenEventDataIsAvailable() {
