@@ -19,15 +19,16 @@ public class EventService implements IEventService {
     private IEventDAO eventDAO;
 
     @Override
-    public Event fetchEventById(int eventId) {
-        Event event = new Event();
-        event.setTitle("Revolution UC");
-        event.setStartTime("11:00am Friday");
-        event.setEndTime("11:00am Friday");
-        event.setDescription("Hackathon");
-        event.setHost("Major League Hacking");
+    public List<Event> fetchEventsByTitle(String title) {
+        List<Event> allEvents = eventDAO.fetchAllEvents();
+        List<Event> matchingEvents = new ArrayList<Event>();;
+        for (Event event: allEvents) {
+            if(event.getTitle().contains(title)){
+                matchingEvents.add(event);
+            }
+        }
 
-        return event;
+        return matchingEvents;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class EventService implements IEventService {
             event.setStartTime(start);
             event.setEndTime(end);
             event.setHost(host);
-
+            eventDAO.save(event);
             allEvents.add(event);
         }
 
@@ -98,4 +99,6 @@ public class EventService implements IEventService {
 
         return null;
     }
+
+
 }

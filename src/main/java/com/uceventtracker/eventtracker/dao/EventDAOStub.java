@@ -7,10 +7,15 @@ import java.util.List;
 
 @Repository
 public class EventDAOStub implements IEventDAO{
-    List<Event> allEvents = new ArrayList<Event>();
+    List<Event> allEvents = new ArrayList<>();
 
     @Override
     public List<Event> fetchAllEvents() {
         return allEvents;
+    }
+
+    @Override
+    public void save(Event event) {
+        allEvents.add(event);
     }
 }
