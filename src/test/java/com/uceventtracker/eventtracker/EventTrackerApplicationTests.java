@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class EventTrackerApplicationTests {
+
     @Autowired
     private IEventDAO eventDAO;
     private List<Event> allEvents;
@@ -25,14 +26,14 @@ class EventTrackerApplicationTests {
 
     @Test
     void checkEventData(){
-        populateEventData();
-        fetchEventsByTitle();
+        givenEventData();
+        whenEventTitleHack();
         thenViewEventData();
     }
 
     @Test
     void fetchAllEvents(){
-
+        givenEventData();
         whenEventDataIsLoaded();
         thenDisplayListOfEvents();
     }
@@ -46,7 +47,7 @@ class EventTrackerApplicationTests {
         }
     }
 
-    private void populateEventData() {
+    private void givenEventData() {
         Event event1 = new Event();
         event1.setTitle("UC Hackathon");
         event1.setLocation("Crosley tower");
@@ -75,7 +76,7 @@ class EventTrackerApplicationTests {
         eventDAO.save(event3);
     }
 
-    private void fetchEventsByTitle() {
+    private void whenEventTitleHack() {
 
         matchingEvents = eventService.fetchEventsByTitle("Hack");
 
@@ -92,9 +93,10 @@ class EventTrackerApplicationTests {
     }
 
     private void whenEventDataIsLoaded() {
+        allEvents = eventService.fetchAllEvents();
     }
 
     private void thenDisplayListOfEvents() {
-        allEvents = eventService.fetchAllEvents();
+        assertEquals(3, allEvents.size());
     }
 }
