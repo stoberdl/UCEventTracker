@@ -18,6 +18,8 @@ public interface IEventService {
 
     List<Event> fetchAllEvents();
 
-    List<Event> fetchRssEvents();
+    List<Event> fetchRssEvents() throws Exception;
+
+    Event save(Event event) throws Exception;
 
 }

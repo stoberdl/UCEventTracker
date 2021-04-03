@@ -1,11 +1,13 @@
 package com.uceventtracker.eventtracker.dao;
 
 import com.uceventtracker.eventtracker.dto.Event;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Profile("test")
 public class EventDAOStub implements IEventDAO{
     List<Event> allEvents = new ArrayList<>();
 
@@ -15,7 +17,8 @@ public class EventDAOStub implements IEventDAO{
     }
 
     @Override
-    public void save(Event event) {
+    public Event save(Event event) {
         allEvents.add(event);
+        return event;
     }
 }
