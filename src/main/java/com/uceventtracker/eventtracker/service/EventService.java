@@ -18,6 +18,10 @@ public class EventService implements IEventService {
     @Autowired
     private IEventDAO eventDAO;
 
+    public EventService (IEventDAO eventDAO) {
+        this.eventDAO = eventDAO;
+    }
+
     @Override
     public List<Event> fetchEventsByTitle(String title) {
         List<Event> allEvents = eventDAO.fetchAllEvents();
@@ -32,13 +36,18 @@ public class EventService implements IEventService {
     }
 
     @Override
+    public Event save(Event event) throws Exception {
+        return eventDAO.save(event);
+    }
+
+    @Override
     public List<Event> fetchAllEvents() {
 
         return eventDAO.fetchAllEvents();
     }
 
     @Override
-    public List<Event> fetchRssEvents(){
+    public List<Event> fetchRssEvents() throws Exception {
         List<Event> allEvents = new ArrayList<Event>();
         ArrayList<String> eventInfo = loadRSS();
 

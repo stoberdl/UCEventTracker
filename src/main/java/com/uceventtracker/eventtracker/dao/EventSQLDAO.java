@@ -2,12 +2,14 @@ package com.uceventtracker.eventtracker.dao;
 
 import com.uceventtracker.eventtracker.dto.Event;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Profile({"dev", "default"})
 public class EventSQLDAO implements IEventDAO {
 
     @Autowired

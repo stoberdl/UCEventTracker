@@ -6,6 +6,7 @@ import com.uceventtracker.eventtracker.service.IEventService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -28,29 +29,21 @@ class EventTrackerApplicationTests {
     Event event3 = new Event();
 
     @Test
-    void checkEventData(){
+    void checkEventData() throws Exception {
         givenEventData();
         whenEventTitleHack();
         thenViewEventData();
     }
 
     @Test
-    void fetchAllEvents(){
+    void fetchAllEvents() throws Exception {
         givenEventData();
         whenEventDataIsLoaded();
         thenDisplayListOfEvents();
     }
 
-    @Test
-    void readRSSEventsFeed(){
-        allEvents = eventService.fetchRssEvents();
 
-        for(Event e : allEvents){
-            System.out.println( e.getTitle() + "\n " + e.getDescription()+ "\n " + e.getLocation() + "\n " + e.getStartTime() + "\n " + e.getEndTime() + "\n " + e.getHost() + "\n******************************************");
-        }
-    }
-
-    private void givenEventData() {
+    private void givenEventData() throws Exception {
         event1.setTitle("UC Hackathon");
         event1.setLocation("Crosley tower");
         try {
@@ -106,8 +99,8 @@ class EventTrackerApplicationTests {
             System.out.println( e.getTitle() + "\n " + e.getDescription()+ "\n " + e.getLocation() + "\n " + e.getStartTime() + "\n " + e.getEndTime() + "\n " + e.getHost() + "\n******************************************");
         }
 
-        assertEquals("UC Hackathon", matchingEvents.get(0).getTitle());
-        assertEquals("Preventing Hacks", matchingEvents.get(1).getTitle());
+        assertEquals("Preventing Hacks", matchingEvents.get(0).getTitle());
+        assertEquals("UC Hackathon", matchingEvents.get(1).getTitle());
     }
 
     private void whenEventDataIsLoaded() {
@@ -119,7 +112,7 @@ class EventTrackerApplicationTests {
     }
 
     @Test
-    void sortEventsByDate() {
+    void sortEventsByDate() throws Exception {
         givenEventData();
         whenEventsFetched();
         thenReturnEventsSortedByDate();
