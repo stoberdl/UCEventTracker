@@ -9,8 +9,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 @Service
@@ -48,7 +53,7 @@ public class EventService implements IEventService {
 
     @Override
     public List<Event> fetchRssEvents() throws Exception {
-        List<Event> allEvents = new ArrayList<Event>();
+        List<Event> allEvents = new ArrayList<>();
         ArrayList<String> eventInfo = loadRSS();
 
 
@@ -65,10 +70,25 @@ public class EventService implements IEventService {
             String end = i.substring(i.indexOf("<end>")+5, i.indexOf("</end>"));
             String host = i.substring(i.indexOf("<host>")+6, i.indexOf("</host>"));
 
+            String[] dateArr = start.split(" |,");
+
+            DateTimeFormatter parser = DateTimeFormatter.ofPattern("MMM")
+                    .withLocale(Locale.ENGLISH);
+            TemporalAccessor accessor = parser.parse(dateArr[3]);
+            String monthNum = Integer.toString(accessor.get(ChronoField.MONTH_OF_YEAR));
+
+            String date = "" + dateArr[2] + "-" + monthNum + "-" + dateArr[4];
+
             event.setTitle(title);
             event.setDescription(description);
             event.setLocation(location);
             event.setLocation(location);
+            try {
+                event.setDate(new SimpleDateFormat("dd-MM-yyyy").parse(date));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
             event.setStartTime(start);
             event.setEndTime(end);
             event.setHost(host);

@@ -15,13 +15,13 @@ class Event {
     @Column(name = "title", nullable = false, unique = true, length = 512)
     private String title;
 
-    @Column(name = "description", nullable = false, length = 512)
+    @Column(name = "description", nullable = false, length = 5000)
     private String description;
 
-    @Column(name = "username", nullable = false, length = 512)
+    @Column(name = "location", nullable = false, length = 512)
     private String location;
 
-    @Column(name = "date", nullable = false, length = 45)
+    @Column(name = "date", nullable = false, length = 45, columnDefinition = "date")
     private Date date;
 
     @Column(name = "startTime", nullable = false, length = 45)
@@ -30,6 +30,6 @@ class Event {
     @Column(name = "endTime", nullable = false, length = 45)
     private String endTime;
 
-    @Column(name = "host", nullable = false, length = 45)
+    @Column(name = "host", nullable = false, length = 512)
     private String host;
 }

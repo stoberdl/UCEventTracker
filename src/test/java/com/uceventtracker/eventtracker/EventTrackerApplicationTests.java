@@ -6,7 +6,6 @@ import com.uceventtracker.eventtracker.service.IEventService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -37,7 +36,7 @@ class EventTrackerApplicationTests {
 
     @Test
     void fetchAllEvents() throws Exception {
-        givenEventData();
+         givenEventData();
         whenEventDataIsLoaded();
         thenDisplayListOfEvents();
     }
