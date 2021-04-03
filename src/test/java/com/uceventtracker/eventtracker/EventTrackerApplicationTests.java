@@ -44,45 +44,45 @@ class EventTrackerApplicationTests {
 
 
     private void givenEventData() throws Exception {
-        event1.setTitle("UC Hackathon");
-        event1.setLocation("Crosley tower");
+        event1.setTitle("Knitting");
+        event1.setLocation("Wheelbarrow tower");
         try {
-            event1.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("23-01-2021"));
+            event1.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("6-01-2021"));
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        event1.setStartTime("1pm");
-        event1.setEndTime("5pm");
-        event1.setDescription("Groups compete to solve problems");
-        event1.setHost("CECH");
+        event1.setStartTime("3pm");
+        event1.setEndTime("4pm");
+        event1.setDescription("Groups compete to knit");
+        event1.setHost("Knitting Club");
         eventDAO.save(event1);
 
-        event2.setTitle("Knitting");
-        event2.setLocation("Wheelbarrow tower");
+        event2.setTitle("Preventing Hacks");
+        event2.setLocation("Mcdonalds");
         try {
-            event2.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("6-01-2021"));
+            event2.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("25-02-2021"));
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        event2.setStartTime("3pm");
-        event2.setEndTime("4pm");
-        event2.setDescription("Groups compete to knit");
-        event2.setHost("Knitting Club");
+        event2.setStartTime("12pm");
+        event2.setEndTime("2pm");
+        event2.setDescription("Learn about ways to prevent hackers from accessing your data.");
+        event2.setHost("CECH");
         eventDAO.save(event2);
 
-        event3.setTitle("Preventing Hacks");
-        event3.setLocation("Mcdonalds");
+        event3.setTitle("UC Hackathon");
+        event3.setLocation("Crosley tower");
         try {
-            event3.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("25-02-2021"));
+            event3.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("23-01-2021"));
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        event3.setStartTime("12pm");
-        event3.setEndTime("2pm");
-        event3.setDescription("Learn about ways to prevent hackers from accessing your data.");
+        event3.setStartTime("1pm");
+        event3.setEndTime("5pm");
+        event3.setDescription("Groups compete to solve problems");
         event3.setHost("CECH");
         eventDAO.save(event3);
     }
@@ -129,6 +129,6 @@ class EventTrackerApplicationTests {
         }
         Collections.sort(eventDates);
 
-        assertEquals(event2.getDate(), eventDates.get(0));
+        assertEquals(event1.getDate(), eventDates.get(0));
     }
 }
