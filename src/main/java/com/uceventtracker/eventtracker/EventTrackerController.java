@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,24 +21,17 @@ public class EventTrackerController {
      * @return start.html
      */
     @RequestMapping("/")
-    public String index(Model model) throws Exception {
-        List<Event> allEvents;
-        Event event = new Event();
-        event.setTitle("UC Hackathon");
-        event.setLocation("Crosley tower");
-        event.setStartTime("1pm");
-        event.setEndTime("5pm");
-        event.setDescription("Groups compete to solve problems");
-        event.setHost("CECH");
-        model.addAttribute(event);
-
-        allEvents = eventService.fetchRssEvents();
-
-        for(Event e : allEvents){
-            System.out.println( e.getTitle() + "\n " + e.getDescription()+ "\n " + e.getLocation() + "\n " + e.getStartTime() + "\n " + e.getEndTime() + "\n " + e.getHost() + "\n******************************************");
+    public String index(Model model) {
+        try {
+            eventService.fetchRssEvents();
+            List<Event> events = eventService.fetchAllEvents();
+            model.addAttribute("events", events);
+            return "start";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "start";
         }
 
-        return "start";
     }
 
 

@@ -3,7 +3,12 @@ package com.uceventtracker.eventtracker.dto;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
+import java.util.Locale;
 
 
 @Entity
@@ -32,4 +37,24 @@ class Event {
 
     @Column(name = "host", nullable = false, length = 512)
     private String host;
+
+    public String toString() {
+        String[] dateArr = getDate().toString().split(" |,");
+
+        DateTimeFormatter parser = DateTimeFormatter.ofPattern("MMM")
+                .withLocale(Locale.ENGLISH);
+        TemporalAccessor accessor = parser.parse(dateArr[1]);
+        String monthNum = Integer.toString(accessor.get(ChronoField.MONTH_OF_YEAR));
+
+        String date = "" + dateArr[2] + "-" + monthNum + "-" + dateArr[5];
+
+        try {
+            setDate(new SimpleDateFormat("dd-MM-yyyy").parse(date));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return title + ": " + date;
+    }
 }
