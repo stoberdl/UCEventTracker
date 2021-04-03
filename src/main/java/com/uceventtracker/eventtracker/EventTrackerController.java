@@ -29,7 +29,7 @@ public class EventTrackerController {
             return "start";
         } catch (Exception e) {
             e.printStackTrace();
-            return "start";
+            return "error";
         }
 
     }
