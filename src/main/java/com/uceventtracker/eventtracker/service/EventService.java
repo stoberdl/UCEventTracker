@@ -3,18 +3,17 @@ package com.uceventtracker.eventtracker.service;
 import com.uceventtracker.eventtracker.dao.IEventDAO;
 import com.uceventtracker.eventtracker.dto.Event;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-@Service
+@Repository
 public class EventService implements IEventService {
+
     @Autowired
     private IEventDAO eventDAO;
 
@@ -41,7 +40,6 @@ public class EventService implements IEventService {
     public List<Event> fetchRssEvents(){
         List<Event> allEvents = new ArrayList<Event>();
         ArrayList<String> eventInfo = loadRSS();
-
 
         for(String i : eventInfo){
             Event event = new Event();
@@ -100,5 +98,10 @@ public class EventService implements IEventService {
         return null;
     }
 
+    @Override
+    public Event save(Event event) {
+
+        return eventDAO.save(event);
+    }
 
 }

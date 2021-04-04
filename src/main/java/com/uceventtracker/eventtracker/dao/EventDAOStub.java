@@ -15,7 +15,8 @@ public class EventDAOStub implements IEventDAO{
     }
 
     @Override
-    public void save(Event event) {
+    public Event save(Event event) {
         allEvents.add(event);
+        return event;
     }
 }

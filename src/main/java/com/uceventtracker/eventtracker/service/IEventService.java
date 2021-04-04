@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IEventService {
     /**
-    *Fetch an event when an id param is passed.
+    * Fetch an event when an id param is passed.
     * @param eventId
     * @return event with the same event id or null if no matches found.
     */
@@ -19,4 +19,5 @@ public interface IEventService {
 
     List<Event> fetchRssEvents();
 
+    Event save(Event event) throws Exception;
 }
