@@ -70,6 +70,11 @@ public class EventService implements IEventService {
         return allEvents;
     }
 
+    @Override
+    public Event save(Event event) throws Exception {
+        return eventDAO.save(event);
+    }
+
     private ArrayList<String> loadRSS() {
         ArrayList<String> eventInfo = new ArrayList<String>();
 
