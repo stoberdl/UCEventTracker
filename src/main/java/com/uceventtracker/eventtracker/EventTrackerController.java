@@ -13,6 +13,7 @@ public class EventTrackerController {
      */
     @RequestMapping("/")
     public String index(Model model) {
+        //should use your DTO, getter/setter methods, and a database (ex. JSON) instead of hard coding values
         Event event = new Event();
         event.setTitle("UC Hackathon");
         event.setLocation("Crosley tower");
