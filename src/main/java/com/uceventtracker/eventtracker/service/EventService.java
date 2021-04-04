@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class EventService implements IEventService {
     @Override
     public List<Event> fetchEventsByTitle(String title) {
         List<Event> allEvents = eventDAO.fetchAllEvents();
-        List<Event> matchingEvents = new ArrayList<Event>();;
+        List<Event> matchingEvents = new ArrayList<>();
         for (Event event: allEvents) {
             if(event.getTitle().contains(title)){
                 matchingEvents.add(event);
@@ -39,10 +40,11 @@ public class EventService implements IEventService {
 
     @Override
     public List<Event> fetchRssEvents(){
-        List<Event> allEvents = new ArrayList<Event>();
+        List<Event> allEvents = new ArrayList<>();
         ArrayList<String> eventInfo = loadRSS();
 
-
+        //assert that the eventInfo is not null to avoid null exceptions
+        assert eventInfo != null;
         for(String i : eventInfo){
             Event event = new Event();
 
@@ -71,29 +73,26 @@ public class EventService implements IEventService {
     }
 
     private ArrayList<String> loadRSS() {
-        ArrayList<String> eventInfo = new ArrayList<String>();
+        ArrayList<String> eventInfo = new ArrayList<>();
 
         try{
             URL url = new URL("https://campuslink.uc.edu/events.rss");
             Scanner in = new Scanner(new InputStreamReader(url.openStream()));
-            String data = "";
+            StringBuilder data = new StringBuilder();
 
             while(in.hasNext()){
-                data += in.nextLine();
+                data.append(in.nextLine());
             }
 
-            data = data.substring(data.indexOf("<item>"));
-            String[] temp = data.split("</item>");
+            data = new StringBuilder(data.substring(data.indexOf("<item>")));
+            String[] temp = data.toString().split("</item>");
 
-            for(String i : temp){
-                eventInfo.add(i);
-            }
+            eventInfo.addAll(Arrays.asList(temp));
 
             eventInfo.remove(eventInfo.size()-1);
             return eventInfo;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
+            //collapse catch blocks for readability
             e.printStackTrace();
         }
 
