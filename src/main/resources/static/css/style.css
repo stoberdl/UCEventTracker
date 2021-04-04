@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+body{
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.h2-create {
+    padding-top: 1em;
+    padding-left: 2em;
+}
+
+.navbar {
+    background-color: #d8003a;
+    padding: 1em 2em;
+}
+
+.nav-link {
+    font-size: 20px;
+}
+
+.col {
+    padding-top: 1em;
+    color: #4e4949;
+}
+
+.input-group {
+    padding: 0em 4em;
+}
+
+.submitEvent {
+    margin-left: 4em;
+}
