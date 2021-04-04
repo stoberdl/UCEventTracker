@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface IEventDAO {
     List<Event> fetchAllEvents();
-    void save(Event event);
+    Event save(Event event);
 }

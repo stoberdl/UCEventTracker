@@ -20,4 +20,6 @@ public interface IEventService {
 
     List<Event> fetchRssEvents();
 
+    Event save(Event event) throws Exception;
+
 }
