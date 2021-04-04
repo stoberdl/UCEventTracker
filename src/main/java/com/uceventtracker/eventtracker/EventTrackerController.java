@@ -24,11 +24,13 @@ public class EventTrackerController {
      */
     @RequestMapping("/")
     public String index() {
+
         return "start";
     }
 
     /**
-     * Handle the / endpoint
+     * Handle the /createEvent endpoint
+     * @param model populates create event fields
      * @return createEvent.html
      */
     @RequestMapping("/createEvent")
@@ -45,6 +47,12 @@ public class EventTrackerController {
         return "createEvent";
     }
 
+    /**
+     * Handle the /saveEvent endpoint
+     * @param event object to save
+     * @return createEvent.html so less clicking and user can go back to
+     * making another event if needed
+     */
     @RequestMapping("/saveEvent")
     public String saveEvent(Event event) {
         try {
@@ -58,6 +66,16 @@ public class EventTrackerController {
         return "createEvent";
     }
 
+    /**
+     * Create a new event object, given the data provided.
+     *
+     * returns one fo the status codes:
+     * 201: successfully created new event
+     * 409: unable to create an event because it already exists
+     *
+     * @param event a JSON representation of a specimen object
+     * @return the newly created event
+     */
     @PostMapping(value="/event", consumes="application/json", produces="application/json")
     @ResponseBody
     public Event createEvent(@RequestBody Event event) {
@@ -67,19 +85,20 @@ public class EventTrackerController {
         } catch (Exception e) {
             // TODO add logging
         }
+
         return newEvent;
     }
 
-//    @GetMapping("/titles")
-//    public ResponseEntity searchTitles(@RequestParam(value="searchTerm", required=false, defaultValue="None") String searchTerm) {
-//        String newSearchTerm = searchTerm + "";
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
-
+    /**
+     * Gets the searchTerm the user inputs in the URL
+     * @param requestParams
+     * @return a page where the status is OK
+     */
     @GetMapping("/titles")
     public ResponseEntity searchTitles(@RequestParam Map<String, String> requestParams) {
         int params = requestParams.size();
         String searchValue = requestParams.get("searchTerm");
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
