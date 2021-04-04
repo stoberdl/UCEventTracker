@@ -13,7 +13,7 @@
 <body>
 <div th:replace="fragents/topnav.html :: navbar"></div>
 
-<h1>Lets Create an Event</h1>
+<h2 class="h2-create">Lets Create an Event</h2>
 
 <form action="#" th:action="@{/saveEvent}" th:object="${event}" method="GET"><br />
     <div class="input-group mb-3">
@@ -40,7 +40,7 @@
         <span class="input-group-text" id="host">Host</span>
         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="host" th:field="*{host}"/>
     </div>
-    <button name="submit" type="submit" value="0">Submit</button>
+    <button class="submitEvent" name="submit" type="submit" value="0">Submit</button>
 </form>
 </body>
 </html>

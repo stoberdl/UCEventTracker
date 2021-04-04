@@ -10,20 +10,29 @@ body{
     overflow: hidden;
 }
 
-h1 {
-    padding: 2em;
+.h2-create {
+    padding-top: 1em;
+    padding-left: 2em;
 }
 
-.container {
-    width: 100%;
-    height: 100vh;
-    color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar{
+.navbar {
     background-color: #d8003a;
-    padding: 2em;
+    padding: 1em 2em;
+}
+
+.nav-link {
+    font-size: 20px;
+}
+
+.col {
+    padding-top: 1em;
+    color: #4e4949;
+}
+
+.input-group {
+    padding: 0em 4em;
+}
+
+.submitEvent {
+    margin-left: 4em;
 }
