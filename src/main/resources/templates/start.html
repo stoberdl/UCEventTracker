@@ -3,16 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>UC Event Tracker Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: #daded4;
+        }
+        #header{
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: 50px;
+            color: #fff;
+            padding-top: 4%;
+            padding-bottom: 2%;
+            text-align: center;
+            text-shadow: 1px 1px 10px #dce0d5;
+        }
+        .event{
+            width: 65vw;
+            background: #a3bcb6;
+            margin: 2% auto;
+            border: 2px solid white;
+            border-radius: 20px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        #title{
+            padding-left: 4%;
+            padding-top: 2%;
+            color: #3c403d;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        #host{
+            padding-left: 4%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            color: #39603d;
+            font-weight: 600;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to our Event Tracker!</h1>
+<h1 id="header">Event Tracker</h1>
 <!--<p th:text="${event}"/>-->
-    <div class = "Event" th:each="event : ${events}">
+    <div class = "event" th:each="event : ${events}">
         <h1 id="title" th:text="${event.title}"></h1>
-        <h1 id="description" th:text="${event.description}"></h1>
-        <h1 id="location" th:text="${event.location}"></h1>
-        <h1 id="startTime" th:text="${event.startTime}"></h1>
-        <h1 id="endTime" th:text="${event.endTime}"></h1>
         <h1 id="host" th:text="${event.host}"></h1>
     </div>
 </body>
