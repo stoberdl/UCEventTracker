@@ -76,13 +76,10 @@ class EventTrackerApplicationTests {
     }
 
     private void fetchEventsByTitle() {
-
         matchingEvents = eventService.fetchEventsByTitle("Hack");
-
     }
 
     private void thenViewEventData() {
-
         for(Event e : matchingEvents){
             System.out.println( e.getTitle() + "\n " + e.getDescription()+ "\n " + e.getLocation() + "\n " + e.getStartTime() + "\n " + e.getEndTime() + "\n " + e.getHost() + "\n******************************************");
         }

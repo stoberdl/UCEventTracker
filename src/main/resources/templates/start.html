@@ -6,6 +6,14 @@
 </head>
 <body>
 <h1>Welcome to our Event Tracker!</h1>
-<p th:text="${event}"/>
+<!--<p th:text="${event}"/>-->
+    <div class = "Event" th:each="event : ${events}">
+        <h1 id="title" th:text="${event.title}"></h1>
+        <h1 id="description" th:text="${event.description}"></h1>
+        <h1 id="location" th:text="${event.location}"></h1>
+        <h1 id="startTime" th:text="${event.startTime}"></h1>
+        <h1 id="endTime" th:text="${event.endTime}"></h1>
+        <h1 id="host" th:text="${event.host}"></h1>
+    </div>
 </body>
 </html>
