@@ -38,8 +38,7 @@ public class EventService implements IEventService {
         return eventDAO.fetchAllEvents();
     }
 
-    @Override
-    public List<Event> fetchRssEvents(){
+    private void fetchRssEvents(){
         List<Event> allEvents = new ArrayList<Event>();
         ArrayList<String> eventInfo = loadRSS();
 
@@ -67,8 +66,6 @@ public class EventService implements IEventService {
             eventDAO.save(event);
             allEvents.add(event);
         }
-
-        return allEvents;
     }
 
     private ArrayList<String> loadRSS() {

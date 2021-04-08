@@ -32,14 +32,13 @@ class EventTrackerApplicationTests {
 
     @Test
     void fetchAllEvents(){
-
         whenEventDataIsLoaded();
         thenDisplayListOfEvents();
     }
 
     @Test
     void readRSSEventsFeed(){
-        allEvents = eventService.fetchRssEvents();
+        allEvents = eventService.fetchAllEvents();
 
         for(Event e : allEvents){
             System.out.println( e.getTitle() + "\n " + e.getDescription()+ "\n " + e.getLocation() + "\n " + e.getStartTime() + "\n " + e.getEndTime() + "\n " + e.getHost() + "\n******************************************");

@@ -17,7 +17,4 @@ public interface IEventService {
     List<Event> fetchEventsByTitle(String title);
 
     List<Event> fetchAllEvents();
-
-    List<Event> fetchRssEvents();
-
 }
