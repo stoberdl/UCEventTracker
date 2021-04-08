@@ -33,17 +33,21 @@
             border-radius: 20px;
             font-family: 'Open Sans', sans-serif;
         }
+        .event p{
+            padding-left: 4%;
+            font-size: 14px;
+        }
         #title{
             padding-left: 4%;
-            padding-top: 2%;
+            padding-top: 4%;
+            padding-bottom: 3%;
             color: #3c403d;
             font-weight: 700;
             font-size: 20px;
         }
-        #host{
+        .info{
             padding-left: 4%;
-            padding-top: 2%;
-            padding-bottom: 2%;
+            padding-bottom: 3%;
             color: #39603d;
             font-weight: 600;
             font-size: 14px;
@@ -52,10 +56,13 @@
 </head>
 <body>
 <h1 id="header">Event Tracker</h1>
-<!--<p th:text="${event}"/>-->
     <div class = "event" th:each="event : ${events}">
         <h1 id="title" th:text="${event.title}"></h1>
-        <h1 id="host" th:text="${event.host}"></h1>
+        <p>Description:</p><h1 class="info" th:text="${event.description}"></h1>
+        <p>Location:</p><h1 class="info" th:text="${event.location}"></h1>
+        <p>Start Time:</p><h1 class="info" th:text="${event.startTime}"></h1>
+        <p>End Time:</p><h1 class="info" th:text="${event.endTime}"></h1>
+        <p>Host:</p><h1 class="info" th:text="${event.host}"></h1>
     </div>
 </body>
 </html>
