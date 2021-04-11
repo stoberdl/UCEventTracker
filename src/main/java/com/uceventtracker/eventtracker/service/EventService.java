@@ -54,6 +54,8 @@ public class EventService implements IEventService {
             String start = i.substring(i.indexOf("<start>")+7, i.indexOf("</start>"));
             String end = i.substring(i.indexOf("<end>")+5, i.indexOf("</end>"));
             String host = i.substring(i.indexOf("<host>")+6, i.indexOf("</host>"));
+            String id = i.substring(i.indexOf("<guid>")+6, i.indexOf("</guid>"));
+            id = id.replaceAll("[^0-9]", "");
 
             event.setTitle(title);
             event.setDescription(description);
@@ -62,6 +64,7 @@ public class EventService implements IEventService {
             event.setStartTime(start);
             event.setEndTime(end);
             event.setHost(host);
+            event.setId(id);
 
             eventDAO.save(event);
             allEvents.add(event);
