@@ -50,8 +50,4 @@ public class EventTrackerController {
     public ResponseEntity searchEvents(@RequestParam(value = "searchTerm", required = false, defaultValue = "None")String searchTerm){
         return new ResponseEntity(HttpStatus.OK);
     }
-    @GetMapping("/events")
-    public ResponseEntity searchEvents(@RequestParam(value = "searchTerm", required = false, defaultValue = "None")String searchTerm){
-        return new ResponseEntity(HttpStatus.OK);
-    }
 }
