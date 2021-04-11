@@ -5,11 +5,15 @@
     <title>UC Event Tracker Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link th:href="@{/css/start.css}" rel="stylesheet" />
-
 </head>
 
 <body>
 <h1 id="header">Event Tracker</h1>
+    <div id="searchDiv">
+        <label id="searchLabel" for="eventSearch">Search:</label>
+    <input type="text" id="eventSearch" name="eventSearch" onkeyup="searchEvents()"/>
+    </div>
+
     <div class = "event" th:each="event : ${events}">
         <h1 id="title" th:text="${event.title}"></h1>
         <p>Description:</p><h1 class="info" th:text="${event.description}"></h1>
@@ -18,5 +22,24 @@
         <p>End Time:</p><h1 class="info" th:text="${event.endTime}"></h1>
         <p>Host:</p><h1 class="info" th:text="${event.host}"></h1>
     </div>
+
 </body>
 </html>
+<script>
+
+
+    function searchEvents() {
+        input = document.getElementById("eventSearch");
+        filter = input.value.toUpperCase();
+        var length = document.getElementsByClassName('event').length;
+
+        for (i=0; i<length; i++){
+            if(document.getElementsByClassName('event')[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                document.getElementsByClassName("event")[i].style.display = "block";
+            }
+            else{
+                document.getElementsByClassName("event")[i].style.display = "none";
+            }
+        }
+    }
+</script>
