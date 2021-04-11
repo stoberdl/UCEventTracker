@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 @Service
@@ -28,7 +29,30 @@ public class EventService implements IEventService {
                 matchingEvents.add(event);
             }
         }
+        return matchingEvents;
+    }
 
+    @Override
+    public List<Event> fetchEventsById(String id) {
+        List<Event> allEvents = eventDAO.fetchAllEvents();
+        List<Event> matchingEvents = new ArrayList<Event>();;
+        for (Event event: allEvents) {
+            if(event.getId().contains(id)){
+                matchingEvents.add(event);
+            }
+        }
+        return matchingEvents;
+    }
+
+    @Override
+    public List<Event> fetchEventsByCategory(String category) {
+        List<Event> allEvents = eventDAO.fetchAllEvents();
+        List<Event> matchingEvents = new ArrayList<Event>();;
+        for (Event event: allEvents) {
+            if(event.getCategory().contains(category)){
+                matchingEvents.add(event);
+            }
+        }
         return matchingEvents;
     }
 
@@ -56,6 +80,7 @@ public class EventService implements IEventService {
             String host = i.substring(i.indexOf("<host>")+6, i.indexOf("</host>"));
             String id = i.substring(i.indexOf("<guid>")+6, i.indexOf("</guid>"));
             id = id.replaceAll("[^0-9]", "");
+            String category = i.substring(i.indexOf("<category>")+10, i.indexOf("</category>"));
 
             event.setTitle(title);
             event.setDescription(description);
@@ -65,6 +90,7 @@ public class EventService implements IEventService {
             event.setEndTime(end);
             event.setHost(host);
             event.setId(id);
+            event.setCategory(category);
 
             eventDAO.save(event);
             allEvents.add(event);

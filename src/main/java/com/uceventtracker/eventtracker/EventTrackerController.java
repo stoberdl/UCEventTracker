@@ -2,7 +2,6 @@ package com.uceventtracker.eventtracker;
 
 import com.uceventtracker.eventtracker.dto.Event;
 import com.uceventtracker.eventtracker.service.IEventService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class EventTrackerController {
@@ -36,16 +35,14 @@ public class EventTrackerController {
         return "start";
     }
 
-    @RequestMapping("/event")
-    public String searchevent(Model model) {
-        allEvents = eventService.fetchAllEvents();
+    @RequestMapping("/randomevent")
+    public String randomevent(Model model) {
+        allEvents = eventService.fetchEventsByCategory("Spirituality");
         model.addAttribute("events", allEvents);
-        return "searchevent";
+        return "randomevent";
     }
-
-    @GetMapping("/event/{id}/")
-        public ResponseEntity searchEvents(@RequestParam(value="searchTerm", required = false, defaultValue = "None")String searchTerm) {
-        String newSearchTerm = searchTerm + "";
-        return new ResponseEntity(HttpStatus.OK);
+    @RequestMapping("/about")
+    public String index() {
+        return "about";
     }
 }

@@ -16,5 +16,10 @@ public interface IEventService {
 
     List<Event> fetchEventsByTitle(String title);
 
+    List<Event> fetchEventsById(String id);
+
+    List<Event> fetchEventsByCategory(String id);
+
     List<Event> fetchAllEvents();
+
 }

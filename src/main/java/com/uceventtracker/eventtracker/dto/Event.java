@@ -11,4 +11,5 @@ class Event {
     private String endTime;
     private String host;
     private String id;
+    private String category;
 }
