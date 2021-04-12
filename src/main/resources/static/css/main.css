@@ -17,6 +17,26 @@ body{
     text-align: center;
     text-shadow: 1px 1px 10px #dce0d5;
 }
+#smallerHeader{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #3c403d;
+    padding-top: 4%;
+    padding-bottom: 0%;
+    text-align: center;
+    text-shadow: 1px 1px 10px #dce0d5;
+}
+#btn-group{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: #a3bcb6;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    text-align: center;
+    text-shadow: 1px 1px 10px #dce0d5;
+}
 .event{
     width: 65vw;
     background: #a3bcb6;
