@@ -69,6 +69,7 @@ public class EventService implements IEventService {
         for(String i : eventInfo){
             Event event = new Event();
 
+            // The "+int" refers to how many spaces to skip to record dataS
             String title = i.substring(i.indexOf("<title>")+7, i.indexOf("</title>"));
             String description = i.substring(i.indexOf("<description>")+13, i.indexOf("</description>"));
             description = description.substring(description.indexOf("p-description description")+27, description.indexOf("<div>    <p>"));
@@ -81,6 +82,7 @@ public class EventService implements IEventService {
             String id = i.substring(i.indexOf("<guid>")+6, i.indexOf("</guid>"));
             id = id.replaceAll("[^0-9]", "");
             String category = i.substring(i.indexOf("<category>")+10, i.indexOf("</category>"));
+            String status = i.substring(i.indexOf("<status>")+8, i.indexOf("</status>"));
 
             event.setTitle(title);
             event.setDescription(description);
@@ -91,6 +93,7 @@ public class EventService implements IEventService {
             event.setHost(host);
             event.setId(id);
             event.setCategory(category);
+            event.setStatus(status);
 
             eventDAO.save(event);
             allEvents.add(event);

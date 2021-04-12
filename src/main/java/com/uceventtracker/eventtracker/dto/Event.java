@@ -12,4 +12,5 @@ class Event {
     private String host;
     private String id;
     private String category;
+    private String status;
 }
