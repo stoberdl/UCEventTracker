@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>UC Event Tracker Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link th:href="@{/css/start.css}" rel="stylesheet" />
 </head>
-
 <body>
-<h1 id="header">Event Tracker</h1>
-    <div id="searchDiv">
-        <label id="searchLabel" for="eventSearch">Search:</label>
-    <input type="text" id="eventSearch" name="eventSearch" onkeyup="searchEvents()"/>
+<div th:replace="fragments/topnav :: navbar"></div>
+    <h1 id="header">Event Tracker Home: All Events</h1>
+    <h1 id="smallerHeader">Sort events</h1>
+    <div id="btn-group">
+        <div th:replace="fragments/sortbuttons :: sortbuttons"></div>
     </div>
-
     <div class = "event" th:each="event : ${events}">
         <h1 id="title" th:text="${event.title}"></h1>
         <p>Description:</p><h1 class="info" th:text="${event.description}"></h1>
@@ -21,25 +22,9 @@
         <p>Start Time:</p><h1 class="info" th:text="${event.startTime}"></h1>
         <p>End Time:</p><h1 class="info" th:text="${event.endTime}"></h1>
         <p>Host:</p><h1 class="info" th:text="${event.host}"></h1>
+        <p>Id:</p><h1 class="info" th:text="${event.id}"></h1>
+        <p>Category:</p><h1 class="info" th:text="${event.category}"></h1>
+        <p>Status:</p><h1 class="info" th:text="${event.status}"></h1>
     </div>
-
 </body>
 </html>
-<script>
-
-
-    function searchEvents() {
-        input = document.getElementById("eventSearch");
-        filter = input.value.toUpperCase();
-        var length = document.getElementsByClassName('event').length;
-
-        for (i=0; i<length; i++){
-            if(document.getElementsByClassName('event')[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                document.getElementsByClassName("event")[i].style.display = "block";
-            }
-            else{
-                document.getElementsByClassName("event")[i].style.display = "none";
-            }
-        }
-    }
-</script>
