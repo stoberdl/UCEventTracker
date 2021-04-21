@@ -15,10 +15,6 @@
         <label id="searchLabel" for="eventSearch">Search:</label>
         <input type="text" id="eventSearch" name="eventSearch" onkeyup="searchEvents()"/>
     </div>
-    <h1 id="smallerHeader">Search by detail</h1>
-    <div id="btn-group">
-        <div th:replace="fragments/sortbuttons :: sortbuttons"></div>
-    </div>
     <div class = "event" th:each="event : ${events}">
         <h1 id="title" th:text="${event.title}"></h1>
         <p>Description:</p><h1 class="info" th:text="${event.description}"></h1>

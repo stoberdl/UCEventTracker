@@ -17,6 +17,16 @@ body{
     padding-top: 1%;
     padding-bottom: 1%;
 }
+#aboutPage{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #3c403d;
+    text-align: center;
+    text-shadow: 1px 1px 10px #dce0d5;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
 #smallerHeader{
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
@@ -78,7 +88,4 @@ body{
     font-size: 20px;
     color: #3c403d;
     font-weight: 600;
-}
-#btn-group{
-    text-align: center;
 }
