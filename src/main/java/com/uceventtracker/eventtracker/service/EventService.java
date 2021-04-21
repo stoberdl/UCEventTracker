@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 @Service
@@ -28,7 +29,30 @@ public class EventService implements IEventService {
                 matchingEvents.add(event);
             }
         }
+        return matchingEvents;
+    }
 
+    @Override
+    public List<Event> fetchEventsById(String id) {
+        List<Event> allEvents = eventDAO.fetchAllEvents();
+        List<Event> matchingEvents = new ArrayList<Event>();;
+        for (Event event: allEvents) {
+            if(event.getId().contains(id)){
+                matchingEvents.add(event);
+            }
+        }
+        return matchingEvents;
+    }
+
+    @Override
+    public List<Event> fetchEventsByCategory(String category) {
+        List<Event> allEvents = eventDAO.fetchAllEvents();
+        List<Event> matchingEvents = new ArrayList<Event>();;
+        for (Event event: allEvents) {
+            if(event.getCategory().contains(category)){
+                matchingEvents.add(event);
+            }
+        }
         return matchingEvents;
     }
 
@@ -45,6 +69,7 @@ public class EventService implements IEventService {
         for(String i : eventInfo){
             Event event = new Event();
 
+            // The "+int" refers to how many spaces to skip to record dataS
             String title = i.substring(i.indexOf("<title>")+7, i.indexOf("</title>"));
             String description = i.substring(i.indexOf("<description>")+13, i.indexOf("</description>"));
             description = description.substring(description.indexOf("p-description description")+27, description.indexOf("<div>    <p>"));
@@ -54,6 +79,10 @@ public class EventService implements IEventService {
             String start = i.substring(i.indexOf("<start>")+7, i.indexOf("</start>"));
             String end = i.substring(i.indexOf("<end>")+5, i.indexOf("</end>"));
             String host = i.substring(i.indexOf("<host>")+6, i.indexOf("</host>"));
+            String id = i.substring(i.indexOf("<guid>")+6, i.indexOf("</guid>"));
+            id = id.replaceAll("[^0-9]", "");
+            String category = i.substring(i.indexOf("<category>")+10, i.indexOf("</category>"));
+            String status = i.substring(i.indexOf("<status>")+8, i.indexOf("</status>"));
 
             event.setTitle(title);
             event.setDescription(description);
@@ -62,6 +91,9 @@ public class EventService implements IEventService {
             event.setStartTime(start);
             event.setEndTime(end);
             event.setHost(host);
+            event.setId(id);
+            event.setCategory(category);
+            event.setStatus(status);
 
             eventDAO.save(event);
             allEvents.add(event);
