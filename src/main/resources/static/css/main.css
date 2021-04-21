@@ -11,29 +11,29 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     font-size: 50px;
-    color: #fff;
-    padding-top: 4%;
-    padding-bottom: 2%;
+    color: #3c403d;
     text-align: center;
     text-shadow: 1px 1px 10px #dce0d5;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+#aboutPage{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #3c403d;
+    text-align: center;
+    text-shadow: 1px 1px 10px #dce0d5;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 #smallerHeader{
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
-    font-size: 30px;
-    color: #3c403d;
-    padding-top: 4%;
-    padding-bottom: 0%;
-    text-align: center;
-    text-shadow: 1px 1px 10px #dce0d5;
-}
-#btn-group{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
     font-size: 20px;
-    color: #a3bcb6;
+    color: #3c403d;
     padding-top: 1%;
-    padding-bottom: 2%;
+    padding-bottom: 1%;
     text-align: center;
     text-shadow: 1px 1px 10px #dce0d5;
 }
@@ -77,4 +77,15 @@ body{
     color: #39603d;
     font-weight: 600;
     font-size: 14px;
+}
+#searchDiv{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+#searchLabel{
+    width: 4vw;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #3c403d;
+    font-weight: 600;
 }

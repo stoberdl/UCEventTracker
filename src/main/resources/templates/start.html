@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>UC Event Tracker Home</title>
@@ -10,10 +10,10 @@
 </head>
 <body>
 <div th:replace="fragments/topnav :: navbar"></div>
-    <h1 id="header">Event Tracker Home: All Events</h1>
-    <h1 id="smallerHeader">Sort events</h1>
-    <div id="btn-group">
-        <div th:replace="fragments/sortbuttons :: sortbuttons"></div>
+    <h1 id="header">Event Viewer Home</h1>
+    <div id="searchDiv">
+        <label id="searchLabel" for="eventSearch">Search:</label>
+        <input type="text" id="eventSearch" name="eventSearch" onkeyup="searchEvents()"/>
     </div>
     <div class = "event" th:each="event : ${events}">
         <h1 id="title" th:text="${event.title}"></h1>
@@ -27,4 +27,19 @@
         <p>Status:</p><h1 class="info" th:text="${event.status}"></h1>
     </div>
 </body>
+<script>
+    function searchEvents() {
+        input = document.getElementById("eventSearch");
+        filter = input.value.toUpperCase();
+        var length = document.getElementsByClassName('event').length;
+        for (i=0; i<length; i++){
+            if(document.getElementsByClassName('event')[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                document.getElementsByClassName("event")[i].style.display = "block";
+            }
+            else{
+                document.getElementsByClassName("event")[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </html>
