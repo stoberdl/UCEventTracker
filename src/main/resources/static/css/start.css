@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #daded4;
+}
+#searchDiv{
+    width: 65vw;
+    margin: 2% auto;
+    font-family: 'Open Sans', sans-serif;
+    text-align: right;
+}
+#searchLabel{
+    width: 10vw;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #39603d;
+    font-weight: 600;
+}
+#eventSearch{
+    width: 15vw;
+    background: #a3bcb6;
+    margin: 2% auto;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+#header{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 50px;
+    color: #fff;
+    padding-top: 4%;
+    padding-bottom: 2%;
+    text-align: center;
+    text-shadow: 1px 1px 10px #dce0d5;
+}
+.event{
+    width: 65vw;
+    background: #a3bcb6;
+    margin: 2% auto;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+.event p{
+    padding-left: 4%;
+    font-size: 14px;
+}
+#title{
+    padding-left: 4%;
+    padding-top: 4%;
+    padding-bottom: 3%;
+    color: #3c403d;
+    font-weight: 700;
+    font-size: 20px;
+}
+.info{
+    padding-left: 4%;
+    padding-bottom: 3%;
+    color: #39603d;
+    font-weight: 600;
+    font-size: 14px;
+}
